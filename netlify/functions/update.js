@@ -3,10 +3,12 @@ const axios = require("axios").default;
 exports.handler = async (event) => {
   console.log("Received an update from Telegram!", JSON.parse(event.body));  
 
-  await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
-    chat_id: JSON.parse(event.body).message.chat.id,
-    text: "I got your message!",
-  });
+  if (JSON.parse(event.body).message) {
+    await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
+      chat_id: JSON.parse(event.body).message.chat.id,
+      text: "I got your message!",
+    });
+  }
 
   if (JSON.parse(event.body).message.document) {
 
@@ -23,8 +25,6 @@ exports.handler = async (event) => {
         chat_id: JSON.parse(event.body).message.chat.id,
         text: `https://api.telegram.org/file/bot${process.env.BOT_TOKEN}/${fileToDownload.data.result.file_path}`,
       });
-    } else {
-      console.log('no file for download')
     }
   }
 
