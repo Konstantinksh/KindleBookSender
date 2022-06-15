@@ -8,14 +8,14 @@ exports.handler = async (event) => {
 
   await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
     chat_id: JSON.parse(event.body).message.chat.id,
-    text: "I got your message!"+`${fileID}`,
+    text: "I got your message!",
   });
 
   const fileToDownload = await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/getFile`, {
     file_id: fileID
   });
 
-  console.log(fileToDownload.data.rusult)
+  console.log(fileToDownload.data)
 
   return { statusCode: 200 };
 }
