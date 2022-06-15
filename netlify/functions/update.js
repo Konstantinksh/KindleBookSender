@@ -15,7 +15,7 @@ exports.handler = async (event) => {
     file_id: fileID
   });
 
-  console.log(fileToDownload)
+  console.log(fileToDownload.data.rusult)
 
   return { statusCode: 200 };
 }
