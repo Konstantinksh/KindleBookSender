@@ -1,9 +1,10 @@
 const axios = require("axios").default;
 
 exports.handler = async (event) => {
-  
+  console.log("Received an update from Telegram!", JSON.parse(event.body));
+
   if (JSON.parse(event.body).message) {
-    console.log("Received an update from Telegram!", JSON.parse(event.body));
+    
 
     const fileID = JSON.parse(event.body).message.document.file_id
 
