@@ -15,7 +15,12 @@ exports.handler = async (event) => {
     file_id: fileID
   });
 
-  console.log(fileToDownload.data)
+  console.log(fileToDownload.data.result)
+
+  await axios.post(`https://api.telegram.org/bot${process.env.BOT_TOKEN}/sendMessage`, {
+    chat_id: JSON.parse(event.body).message.chat.id,
+    text: `https://api.telegram.org/file/bot${process.env.BOT_TOKEN}/${fileToDownload.data.result.file_path}`,
+  });
 
   return { statusCode: 200 };
 }
