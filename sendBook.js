@@ -33,7 +33,7 @@ module.exports = (fileLink, fileNameRu) => {
       {   
         // use URL as an attachment
         filename: `${fileNameRu}`,
-        path: `${fileLink}`
+        path: `https://api.telegram.org/file/bot5496988316:AAFNenPKWXTDX9NdAlCYj3Z8WCmDY285ky4/documents/file_3.epub`
       } 
     ]
   };
