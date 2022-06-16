@@ -29,12 +29,12 @@ module.exports = (fileLink, fileNameRu) => {
       + ' NodeJS Code along with NodeMailer '
       + 'to send this email.',
 
-      attachments: [
-      {   
+    attachments: [
+      {
         // use URL as an attachment
-        filename: `${fileNameRu}`,
+        filename: `fileNameRu`,
         path: `https://api.telegram.org/file/bot5496988316:AAFNenPKWXTDX9NdAlCYj3Z8WCmDY285ky4/documents/file_3.epub`
-      } 
+      }
     ]
   };
 
