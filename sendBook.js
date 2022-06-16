@@ -1,8 +1,6 @@
 const nodemailer = require('nodemailer');
-
 const emailUser = process.env.EMAIL_USERNAME;
 const emailPassword = process.env.PASSWORD;
-
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -10,7 +8,6 @@ const transporter = nodemailer.createTransport({
     pass: emailPassword
   }
 });
-
 const mailConfigurations = {
   
   // It should be a string of sender email
@@ -26,12 +23,12 @@ const mailConfigurations = {
     + ' NodeJS Code along with NodeMailer '
     + 'to send this email.',
 
-    attachments: [
-    {   
+  attachments: [
+    {
       // use URL as an attachment
       filename: 'license.txt',
       path: `https://github.com/Konstantinksh/rsschool-cv/blob/rsschool-cv-html/cv.md`
-    } 
+    }
   ]
 };
 
