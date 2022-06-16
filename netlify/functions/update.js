@@ -1,10 +1,15 @@
 const sendMessage = require("../../sendMessage");
+const messageParts = require("../../messageParts");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
   console.log("Received an update from Telegram!", message);
+  
+  const { command, botName, extra } = messageParts(message.text);
 
-  await sendMessage(message.chat.id, "I got your message!");
+  if (botName === "Alfred_thehelper_bot" || botName === null) {
+    await sendMessage(message.chat.id, "I got your message!");
+  }
 
   return { statusCode: 200 };
 }
