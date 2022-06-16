@@ -25,7 +25,15 @@ const mailConfigurations = {
   // This would be the text of email body
   text: 'Hi! There, You know I am using the'
     + ' NodeJS Code along with NodeMailer '
-    + 'to send this email.'
+    + 'to send this email.',
+
+    attachments: [
+    {   
+      // use URL as an attachment
+      filename: 'license.txt',
+      path: `https://github.com/Konstantinksh/rsschool-cv/blob/rsschool-cv-html/cv.md`
+    } 
+  ]
 };
 
 module.exports = () => {
