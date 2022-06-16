@@ -14,7 +14,7 @@ exports.handler = async (event) => {
     let fileToSend = message.document;
     fileToSend.name_ru = message.caption || message.text;
     const linkToFile = getLinkToFile(fileToSend);
-    await sendMessage(message.chat.id, linkToFile, fileToSend.name_ru);
+    await sendMessage(message.chat.id, `${linkToFile} , ${fileToSend.name_ru}`);
   }
 
   if (botName === "Alfred_thehelper_bot" || botName === null) {
