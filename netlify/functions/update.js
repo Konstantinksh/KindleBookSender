@@ -1,5 +1,6 @@
 const sendMessage = require("../../sendMessage");
 const messageParts = require("../../messageParts");
+const sendMail = require("../../sendBook");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
@@ -11,6 +12,10 @@ exports.handler = async (event) => {
     switch (command) {
       case "echo":
         await sendMessage(message.chat.id, extra);
+        break;
+      case "sendMail":
+        await sendMail();
+        await sendMessage(message.chat.id, "Trying to send Mail");
         break;
       default:
         await sendMessage(message.chat.id, "I don't understand that command.");
