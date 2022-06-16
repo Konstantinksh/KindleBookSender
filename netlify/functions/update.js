@@ -8,7 +8,13 @@ exports.handler = async (event) => {
   const { command, botName, extra } = messageParts(message.text);
 
   if (botName === "Alfred_thehelper_bot" || botName === null) {
-    await sendMessage(message.chat.id, "I got your message!");
+    switch (command) {
+      case "echo":
+        await sendMessage(message.chat.id, extra);
+        break;
+      default:
+        await sendMessage(message.chat.id, "I don't understand that command.");
+    }
   }
 
   return { statusCode: 200 };
