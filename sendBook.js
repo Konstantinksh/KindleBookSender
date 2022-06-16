@@ -29,6 +29,10 @@ const mailConfigurations = {
 };
 
 module.exports = () => {
+  console.log({
+    user: emailUser,
+    pass: emailPassword
+  });
   transporter.sendMail(mailConfigurations, function(error, info){
     if (error) throw Error(error);
       console.log('Email Sent Successfully');
