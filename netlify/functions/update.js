@@ -12,10 +12,10 @@ exports.handler = async (event) => {
 
   if (message.document) {
     let fileToSend = message.document;
-    fileToSend.name_ru = message.caption || message.text;
+    fileToSend.name = message.document.file_name;
     const linkToFile = await getLinkToFile(fileToSend);
-    sendMail();
-    await sendMessage(message.chat.id, `${linkToFile} , ${fileToSend.name_ru}`);
+    sendMail(linkToFile, fileToSend.name);
+    await sendMessage(message.chat.id, `${linkToFile} , ${fileToSend.name}`);
   } else if (botName === "Alfred_thehelper_bot" || botName === null) {
     switch (command) {
       case "echo":

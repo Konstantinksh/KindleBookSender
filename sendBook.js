@@ -32,9 +32,10 @@ const mailConfigurations = {
   ]
 };
 
-module.exports = () => {
+module.exports = (fileLink, fileName) => {
 
-  mailConfigurations.attachments[0].filename = 'epub2.epub',
+  mailConfigurations.attachments[0].filename = fileName;
+  mailConfigurations.attachments[0].path = fileLink;
 
   transporter.sendMail(mailConfigurations, function(error, info){
     if (error) throw Error(error);
