@@ -1,14 +1,21 @@
 const sendMessage = require("../../sendMessage");
 const messageParts = require("../../messageParts");
 const sendMail = require("../../sendBook");
+const getLinkToFile = require("../../getLinkToFile");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
-  console.log("Received an update from Telegram!", message, event);
+  console.log("Received an update from Telegram!", message);
 
-  const textToMatch = message.text || message.caption || 'not a text message';
-  
+  const textToMatch = message.text || message.caption || 'not a text message';  
   const { command, botName, extra } = messageParts(textToMatch);
+
+  if (message.document) {
+    let fileToSend = message.document;
+    fileToSend.name_ru = message.caption || message.text;
+    const linkToFile = getLinkToFile(fileToSend);
+    await sendMessage(message.chat.id, linkToFile, fileToSend.name_ru);
+  }
 
   if (botName === "Alfred_thehelper_bot" || botName === null) {
     switch (command) {
