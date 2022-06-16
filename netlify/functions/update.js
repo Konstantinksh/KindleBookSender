@@ -1,7 +1,7 @@
 const axios = require("axios").default;
 
 exports.handler = async (event) => {
-  console.log("Received an update from Telegram!", JSON.parse(event));  
+  console.log("Received an update from Telegram!", JSON.parse(event.body), event);  
 
   return { statusCode: 200 };
 }
