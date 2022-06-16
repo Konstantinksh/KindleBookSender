@@ -13,7 +13,7 @@ exports.handler = async (event) => {
   if (message.document) {
     let fileToSend = message.document;
     fileToSend.name_ru = message.caption || message.text;
-    const linkToFile = getLinkToFile(fileToSend);
+    const linkToFile = await getLinkToFile(fileToSend);
     await sendMessage(message.chat.id, `${linkToFile} , ${fileToSend.name_ru}`);
   }
 
