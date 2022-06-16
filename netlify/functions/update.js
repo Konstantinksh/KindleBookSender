@@ -4,7 +4,7 @@ const sendMail = require("../../sendBook");
 
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
-  console.log("Received an update from Telegram!", message);
+  console.log("Received an update from Telegram!", message, event);
   
   const { command, botName, extra } = messageParts(message.text);
 
