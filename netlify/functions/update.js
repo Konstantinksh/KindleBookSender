@@ -14,7 +14,7 @@ exports.handler = async (event) => {
         await sendMessage(message.chat.id, extra);
         break;
       case "sendMail":
-        await sendMail();
+        sendMail();
         await sendMessage(message.chat.id, "Trying to send Mail");
         break;
       default:
