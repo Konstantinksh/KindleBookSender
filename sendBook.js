@@ -11,32 +11,33 @@ const transporter = nodemailer.createTransport({
   }
 });
 
-const mailConfigurations = {
-  
-  // It should be a string of sender email
-  from: 'alfredthehelperbot@gmail.com',
+module.exports = (fileLink, fileNameRu) => {
+
+  const mailConfigurations = {
     
-  // Comma Separated list of mails
-  to: 'konstantinksh@gmail.com',
+    // It should be a string of sender email
+    from: 'alfredthehelperbot@gmail.com',
+      
+    // Comma Separated list of mails
+    to: 'konstantinksh@gmail.com',
 
-  // Subject of Email
-  subject: 'Sending Email using Node.js',
-    
-  // This would be the text of email body
-  text: 'Hi! There, You know I am using the'
-    + ' NodeJS Code along with NodeMailer '
-    + 'to send this email.',
+    // Subject of Email
+    subject: 'Sending Email using Node.js',
+      
+    // This would be the text of email body
+    text: 'Hi! There, You know I am using the'
+      + ' NodeJS Code along with NodeMailer '
+      + 'to send this email.',
 
-    attachments: [
-    {   
-      // use URL as an attachment
-      filename: 'license.txt',
-      path: `https://github.com/Konstantinksh/rsschool-cv/blob/rsschool-cv-html/cv.md`
-    } 
-  ]
-};
+      attachments: [
+      {   
+        // use URL as an attachment
+        filename: `${fileNameRu}`,
+        path: `${fileLink}`
+      } 
+    ]
+  };
 
-module.exports = () => {
   transporter.sendMail(mailConfigurations, function(error, info){
     if (error) throw Error(error);
       console.log('Email Sent Successfully');
