@@ -33,6 +33,9 @@ const mailConfigurations = {
 };
 
 module.exports = () => {
+
+  mailConfigurations.attachments[0].filename = 'epub2.epub',
+
   transporter.sendMail(mailConfigurations, function(error, info){
     if (error) throw Error(error);
       console.log('Email Sent Successfully');
