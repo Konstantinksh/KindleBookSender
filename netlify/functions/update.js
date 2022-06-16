@@ -5,8 +5,10 @@ const sendMail = require("../../sendBook");
 exports.handler = async (event) => {
   const { message } = JSON.parse(event.body);
   console.log("Received an update from Telegram!", message, event);
+
+  const textToMatch = message.text || message.caption || 'not a text message';
   
-  const { command, botName, extra } = messageParts(message.text);
+  const { command, botName, extra } = messageParts(textToMatch);
 
   if (botName === "Alfred_thehelper_bot" || botName === null) {
     switch (command) {
