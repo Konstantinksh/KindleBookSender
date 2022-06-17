@@ -1,9 +1,9 @@
 const nodemailer = require('nodemailer');
-const emailUser = process.env.EMAIL_USERNAME_MAILRU;
-const emailPassword = process.env.PASSWORD_MAILRU;
+const emailUser = process.env.EMAIL_USERNAME;
+const emailPassword = process.env.PASSWORD;
 
 const transporter = nodemailer.createTransport({
-  service: "Mail.ru",
+  service: 'gmail',
   auth: {
     user: emailUser,
     pass: emailPassword
@@ -46,4 +46,3 @@ module.exports = (fileLink, fileName) => {
   });
   console.log('done');
 }
-
