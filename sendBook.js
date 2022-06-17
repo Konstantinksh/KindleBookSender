@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const emailUser = process.env.EMAIL_USERNAME;
 const emailPassword = process.env.PASSWORD;
+
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
@@ -8,6 +9,7 @@ const transporter = nodemailer.createTransport({
     pass: emailPassword
   }
 });
+
 const mailConfigurations = {
   
   // It should be a string of sender email
@@ -33,10 +35,9 @@ const mailConfigurations = {
 };
 
 module.exports = (fileLink, fileName) => {
-
   mailConfigurations.attachments[0].filename = fileName;
   mailConfigurations.attachments[0].path = fileLink;
-
+  console.log(fileLink, fileName);
   transporter.sendMail(mailConfigurations, function(error, info){
     if (error) throw Error(error);
       console.log('Email Sent Successfully');
