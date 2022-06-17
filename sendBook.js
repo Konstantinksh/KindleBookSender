@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
 const mailConfigurations = {
   
   // It should be a string of sender email
-  from: 'alfredthehelperbot@gmail.com',
+  from: 'alfredthehelperbot@mail.ru',
     
   // Comma Separated list of mails
   to: 'konstantinksh@gmail.com',
