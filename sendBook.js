@@ -38,9 +38,11 @@ module.exports = (fileLink, fileName) => {
   mailConfigurations.attachments[0].filename = fileName;
   mailConfigurations.attachments[0].path = fileLink;
   console.log(fileLink, fileName);
-  transporter.sendMail(mailConfigurations, function(error, info){
+
+  transporter.sendMail(mailConfigurations, (error, info) => {
     if (error) throw Error(error);
-      console.log('Email Sent Successfully');
+    console.log('Email Sent Successfully');
     console.log(info);
   });
+  console.log('done');
 }
